@@ -1,0 +1,81 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --progress --inline --hot --env development",
+    "build": "webpack -p --env production"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.2.9",
+    "babel-plugin-transform-class-properties": "^6.23.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-latest": "^6.22.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-flowtype": "^2.30.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.9.0",
+    "html-webpack-plugin": "^2.28.0",
+    "serve": "^1.4.0",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.3.0"
+  },
+  "dependencies": {
+    "axios": "^0.15.3",
+    "radium": "^0.18.1",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0",
+    "redux-devtools-extension": "^2.13.0",
+    "redux-saga": "^0.14.3"
+  },
+  "babel": {
+    "presets": [
+      "latest",
+      "react",
+      "flow"
+    ],
+    "plugins": [
+      "transform-class-properties"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb",
+      "plugin:flowtype/recommended"
+    ],
+    "plugins": [
+      "import",
+      "flowtype"
+    ],
+    "env": {
+      "browser": true
+    },
+    "parser": "babel-eslint",
+    "rules": {
+      "indent": "off",
+      "semi": "off",
+      "react/jsx-indent": "off",
+      "react/prop-types": "off",
+      "eol-last": "off",
+      "no-trailing-spaces": "off",
+      "class-methods-use-this": "off",
+      "object-curly-spacing": "off",
+      "max-len": "off",
+      "new-cap": "off",
+      "import/prefer-default-export": "off",
+      "no-nested-ternary": "off"
+    }
+  }
+}
