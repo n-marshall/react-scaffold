@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --progress --inline --hot --env development",
-    "build": "webpack -p --env production"
+    "build": "webpack -p --env production",
+    "format": "prettier-standard 'src/**/*.js'",
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
   },
   "author": "",
   "license": "MIT",
@@ -20,12 +22,19 @@
     "babel-preset-react-hmre": "^1.1.1",
     "eslint": "^3.15.0",
     "eslint-config-airbnb": "^14.1.0",
+    "eslint-config-prettier": "^2.2.0",
     "eslint-loader": "^1.6.1",
     "eslint-plugin-flowtype": "^2.30.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-prettier": "^2.1.2",
     "eslint-plugin-react": "^6.9.0",
     "html-webpack-plugin": "^2.28.0",
+    "husky": "^0.14.1",
+    "lint-staged": "^4.0.0",
+    "prettier": "^1.5.2",
+    "prettier-eslint": "^6.4.1",
+    "prettier-standard": "^5.1.0",
     "serve": "^1.4.0",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
@@ -36,6 +45,7 @@
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^5.0.2",
+    "react-router": "^4.1.1",
     "redux": "^3.6.0",
     "redux-devtools-extension": "^2.13.0",
     "redux-saga": "^0.14.3"
@@ -53,21 +63,27 @@
   "eslintConfig": {
     "extends": [
       "airbnb",
-      "plugin:flowtype/recommended"
+      "plugin:flowtype/recommended",
+      "prettier",
+      "prettier/flowtype",
+      "prettier/react"
     ],
     "plugins": [
       "import",
-      "flowtype"
+      "flowtype",
+      "prettier"
     ],
     "env": {
       "browser": true
     },
     "parser": "babel-eslint",
     "rules": {
+      "prettier/prettier": "error",
       "indent": "off",
       "semi": "off",
       "react/jsx-indent": "off",
       "react/prop-types": "off",
+      "react/jsx-filename-extension": "off",
       "eol-last": "off",
       "no-trailing-spaces": "off",
       "class-methods-use-this": "off",
@@ -76,6 +92,14 @@
       "new-cap": "off",
       "import/prefer-default-export": "off",
       "no-nested-ternary": "off"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "src/**/*.js": [
+        "prettier-standard",
+        "git add"
+      ]
     }
   }
 }
