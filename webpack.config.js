@@ -1,9 +1,10 @@
 const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HTMLWebpackTemplate = require("html-webpack-template");
 
 // Resolve paths
-const BUILD_DIR = path.resolve(__dirname, "./build");
+const BUILD_DIR = path.resolve(__dirname, ".build");
 const APP_DIR = path.resolve(__dirname, "src");
 
 const commonConfig = {
@@ -26,24 +27,32 @@ const commonConfig = {
   resolve: {
     extensions: ["*", ".js", ".jsx"]
   },
-  plugins: []
+  plugins: [
+    new HtmlWebpackPlugin({
+      hash: true,
+      // Required
+      inject: false,
+      template: HTMLWebpackTemplate,
+      // template: 'node_modules/html-webpack-template/index.ejs',
+
+      // Optional
+      appMountId: "app"
+    })
+  ]
 };
 
 function developmentConfig() {
   const config = {
     devServer: {
       historyApiFallback: true,
-      contentBase: "public",
+      contentBase: BUILD_DIR,
       stats: "errors-only",
       host: process.env.HOST, // Defaults to `localhost`
       port: process.env.PORT // Defaults to 8080
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
-      new webpack.NamedModulesPlugin(),
-      new HtmlWebpackPlugin({
-        hash: true
-      })
+      new webpack.NamedModulesPlugin()
     ]
   };
 
@@ -52,16 +61,17 @@ function developmentConfig() {
   });
 }
 
-function productionConfig() {
-  return commonConfig;
-}
+const productionConfig = commonConfig;
+
+// function productionConfig() {
+//   return commonConfig;
+// }
 
 module.exports = function(env) {
-  console.log("env", env);
+  return env === "production" ? productionConfig : developmentConfig();
+  // if (env === "production") {
+  //   return productionConfig();
+  // }
 
-  if (env === "production") {
-    return productionConfig();
-  }
-
-  return developmentConfig();
+  // return developmentConfig();
 };
