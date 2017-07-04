@@ -17,6 +17,7 @@
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.9",
     "babel-plugin-transform-class-properties": "^6.23.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-polyfill": "^6.23.0",
     "babel-preset-latest": "^6.22.0",
     "babel-preset-react": "^6.16.0",
@@ -60,7 +61,8 @@
       "flow"
     ],
     "plugins": [
-      "transform-class-properties"
+      "transform-class-properties",
+      "transform-object-rest-spread"
     ]
   },
   "eslintConfig": {
