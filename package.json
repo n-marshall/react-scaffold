@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --progress --inline --hot --env development",
     "build": "webpack -p --env production",
     "format": "prettier-standard 'src/**/*.js'",
-    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
     "deploy": "yarn build; netlify deploy"
   },
   "author": "",
