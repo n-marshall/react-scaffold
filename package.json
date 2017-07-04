@@ -94,7 +94,8 @@
       "max-len": "off",
       "new-cap": "off",
       "import/prefer-default-export": "off",
-      "no-nested-ternary": "off"
+      "no-nested-ternary": "off",
+      "one-var": "off"
     }
   },
   "lint-staged": {
