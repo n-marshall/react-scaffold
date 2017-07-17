@@ -60,9 +60,9 @@
   "babel": {
     "presets": ["latest", "react", "flow"],
     "plugins": [
+      "babel-plugin-transform-decorators-legacy",
       "transform-class-properties",
-      "transform-object-rest-spread",
-      "babel-plugin-transform-decorators-legacy"
+      "transform-object-rest-spread"
     ]
   },
   "eslintConfig": {
