@@ -33,20 +33,18 @@
     "eslint-plugin-prettier": "^2.1.2",
     "eslint-plugin-react": "^6.9.0",
     "html-webpack-plugin": "^2.28.0",
+    "html-webpack-template": "^5.6.0",
     "husky": "^0.14.1",
     "lint-staged": "^4.0.0",
     "prettier": "^1.5.2",
     "prettier-eslint": "^6.4.1",
     "prettier-standard": "^5.1.0",
-    "serve": "^1.4.0",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
   },
   "dependencies": {
     "axios": "^0.15.3",
-    "html-webpack-template": "^6.0.1",
-    "mobx": "^3.2.1",
-    "mobx-react": "^4.2.2",
+    "kea": "^0.23.3",
     "radium": "^0.18.1",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
@@ -55,10 +53,15 @@
     "react-router": "^4.1.1",
     "redux": "^3.6.0",
     "redux-devtools-extension": "^2.13.0",
-    "redux-saga": "^0.14.3"
+    "redux-saga": "^0.14.3",
+    "reselect": "^3.0.1"
   },
   "babel": {
-    "presets": ["latest", "react", "flow"],
+    "presets": [
+      "latest",
+      "react",
+      "flow"
+    ],
     "plugins": [
       "babel-plugin-transform-decorators-legacy",
       "transform-class-properties",
@@ -73,7 +76,11 @@
       "prettier/flowtype",
       "prettier/react"
     ],
-    "plugins": ["import", "flowtype", "prettier"],
+    "plugins": [
+      "import",
+      "flowtype",
+      "prettier"
+    ],
     "env": {
       "browser": true
     },
@@ -99,7 +106,10 @@
   },
   "lint-staged": {
     "linters": {
-      "src/**/*.js": ["prettier-standard", "git add"]
+      "src/**/*.js": [
+        "prettier-standard",
+        "git add"
+      ]
     }
   }
 }

@@ -5,10 +5,10 @@ const HTMLWebpackTemplate = require("html-webpack-template");
 
 // Resolve paths
 const BUILD_DIR = path.resolve(__dirname, ".build");
-const APP_DIR = path.resolve(__dirname, "src");
+const SRC_DIR = path.resolve(__dirname, "src");
 
 const commonConfig = {
-  entry: ["babel-polyfill", APP_DIR],
+  entry: ["babel-polyfill", SRC_DIR],
   output: {
     path: BUILD_DIR,
     filename: "bundle.js"
@@ -19,7 +19,7 @@ const commonConfig = {
         // Babel loader for React's JSX
         test: /\.jsx?$/,
         loaders: ["babel-loader", "eslint-loader"],
-        include: APP_DIR,
+        include: SRC_DIR,
         exclude: [/node_modules/]
       }
     ]
@@ -63,15 +63,6 @@ function developmentConfig() {
 
 const productionConfig = commonConfig;
 
-// function productionConfig() {
-//   return commonConfig;
-// }
-
 module.exports = function(env) {
   return env === "production" ? productionConfig : developmentConfig();
-  // if (env === "production") {
-  //   return productionConfig();
-  // }
-
-  // return developmentConfig();
 };
