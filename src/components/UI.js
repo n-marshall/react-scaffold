@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 const passer = ({ children, style }) =>
   <div style={style}>
@@ -50,25 +50,19 @@ export const Button = props =>
     {props.text || props.children}
   </button>;
 
-export class ListView extends Component {
-  getRow = (dataItem, idx) => {
-    const { renderRow } = this.props;
-    return (
-      <div key={idx} style={this.props.rowStyle}>
-        {renderRow(dataItem)}
-      </div>
-    );
-  };
+const getRow = (dataItem, idx) => {
+  const { renderRow } = this.props;
+  return (
+    <div key={idx} style={this.props.rowStyle}>
+      {renderRow(dataItem)}
+    </div>
+  );
+};
 
-  render() {
-    const { data } = this.props;
-    return (
-      <div style={this.props.style}>
-        {data.map(this.getRow)}
-      </div>
-    );
-  }
-}
+export const ListView = props =>
+  <div style={this.props.style}>
+    {props.data.map(getRow)}
+  </div>;
 
 export const Image = ({ src, style }) =>
   <img src={src} alt={src} style={style} />;
